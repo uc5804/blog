@@ -8,7 +8,7 @@ function App() {
   // var [a,b] = [10, 100]; //ES6 destructuring 문법 : array, object 에 있던 자료를 변수에 쉽게 담고 싶을 때
 
   let [글제목,글제목변경] = useState(['남자 코트 추천', '강남 우동 맛집', '리액트 독학']);
-  let [따봉, 따봉변경] = useState([0,0,0]);
+  let [따봉, 따봉변경] = useState(0);
 
   let [modal, modal변경] = useState(false); //사이트 첫 로드시 모달창은 안보임, 제목을 누르면 보여야 함
   
@@ -39,14 +39,6 @@ function App() {
     // 글제목변경(['여자 코트 추천', '강남 우동 맛집', '리액트 독학']); //원래 array와 대응되도록 작성
   }
 
-  function 따봉플러스(index){
-    var newArray = 따봉;
-    var newArray = [...따봉];
-    newArray[index]++;
-    따봉변경(newArray);
-  }
-
-
   return (
     <div className="App">
       <div className="black-nav">
@@ -56,9 +48,9 @@ function App() {
       
 
       {
-        글제목.map(function(글, index){ //글제목 개수에 밎게 생성
-          return   <div className="list" key={index}>
-                    <h3>{글} <span onClick={()=>{따봉플러스(index)}}>👍</span> {따봉[index]} </h3>
+        글제목.map(function(글){ //글제목 개수에 밎게 생성
+          return   <div className="list">
+                    <h3>{글} <span onClick={()=>{따봉변경(따봉+1)}}>👍</span> {따봉} </h3>
                     <p>2월 17일 발행</p>
                     <hr/>
                   </div>
